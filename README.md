@@ -1,28 +1,14 @@
-# discord.js v14 × discord の OAuth2
+# DebtBot
 
 ## bot
 
--   言語: TypeScript
--   主に、 discord.js v14 を使用
-
-### 用意している Slash Command
-
-#### `/register-user`
-
--   ユーザー登録を行うスラッシュコマンド
-
-#### `/register-delete`
-
--   ユーザー削除を行うスラッシュコマンド
-
-#### `/approval`
-
--   ユーザー登録をしたユーザーのみが、`You are authorized!`という返信を見ることができるコマンド
+-   使用言語: TypeScript
+-   discord.js v14 で作成
 
 ## backend
 
--   言語: TypeScript
--   Web API: Hono
+-   使用言語: TypeScript
+-   WebAPI: Hono
 -   ORM: Prisma
 -   RDBMS: MySQL
 
@@ -108,36 +94,40 @@ CLIENTSECRET = ""
 
 ```
 
-## 参考にさせていただいたサイト
+## DebtBot のテーブル設計
 
-https://qiita.com/masayoshi4649/items/46fdb744cb8255f5eb98
+```mermaid
+erDiagram
+    User ||--|{ Debt : lend
+    User ||--|{ Debt : borrow
+    User {
+        BigInt discordId PK, UK "@id @unique"
+        String discordName
+        DateTime createdAt "@default(now())"
+        DateTime updatedAt "@updatedAt"
+        Debt debtLend "@relation('Lend')"
+        Debt debtBorrow "@relation('Borrow')"
+    }
+    Debt {
+        Int id PK, UK "@id @default(autoincrement())"
+        Int money
+        DateTime createdAt "@default(now())"
+        DateTime updatedAt "@updatedAt"
+        BigInt lendId FK "@relation(name: 'Lend', fields: [lendId], references: [discordId])"
+        BigInt borrowId FK "@relation(name: 'Borrow', fields: [borrowId], references: [discordId])"
+    }
+```
 
-https://discordjs.guide/oauth2/#a-quick-example
+## Web API のエンドポイント
 
-https://qiita.com/sukeo-sukeo/items/6e86906d88e1110bbb36
+#### `/user/register`
 
-https://hono.dev/top
+-   ユーザーの登録を行うエンドポイント
 
-https://www.server-memo.net/shellscript/file_check.html
+#### `/user/delete`
 
-http://www.ajisaba.net/sh/get_dir.html
+-   登録されているユーザーの登録を削除するエンドポイント
 
-https://tech.kurojica.com/archives/20987/
+#### `/approval`
 
-https://qiita.com/richmikan@github/items/eefbaed716e5ed198973
-
-http://tech.clickyourstyle.com/articles/23
-
-https://qiita.com/take4s5i/items/e207cee4fb04385a9952
-
-https://qiita.com/shin1rok/items/efb5052ef5fb8138c26d
-
-https://qiita.com/plcherrim/items/8edf3d3d33a0ae86cb5c
-
-https://rainbow-engine.com/batch-folderfile-existcheck/
-
-https://setips.net/bat/bat-exist/
-
-https://note.alhinc.jp/n/n828e5d7a417f
-
-https://qiita.com/tera1707/items/e8c5cacac28b2cd7598f
+-   登録されているユーザーと登録されていないユーザーで、返す情報が変わるエンドポイント
