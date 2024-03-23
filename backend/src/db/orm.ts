@@ -3,10 +3,11 @@ import { UserDataType } from 'types';
 
 const prisma = new PrismaClient();
 
-const registerUser = async (discordId: string): Promise<void> => {
+const registerUser = async (discordId: string, discordUsername: string): Promise<void> => {
     const user: UserDataType = await prisma.user.create({
         data: {
             discordId,
+            discordUsername,
         },
     });
 };

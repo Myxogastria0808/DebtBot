@@ -1,6 +1,6 @@
 type UserDataType = {
-    id: number;
     discordId: string;
+    discordUsername: string;
     createdAt: Date;
     updatedAt: Date;
 };

@@ -48,7 +48,7 @@ cd ..
 cd backend
 yarn
 #データベースに関する情報を適宜書き換える
-prisma migrate
+yarn migrate
 ```
 
 ### `.env`ファイルの生成

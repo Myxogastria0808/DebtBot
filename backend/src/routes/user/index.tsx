@@ -63,7 +63,7 @@ router.get('/register', async (c) => {
             const validator: boolean = await userExistValidator(discord.id);
             if (!validator) {
                 //ユーザーの登録
-                await registerUser(discord.id);
+                await registerUser(discord.id, discord.username);
             } else {
                 return c.html(
                     <>

@@ -14,8 +14,21 @@ datasource db {
 }
 
 model User {
+  discordId       String   @id @unique
+  discordUsername String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  debtLend        Debt[]   @relation("Lend")
+  debtBorrow      Debt[]   @relation("Borrow")
+}
+
+model Debt {
   id        Int      @id @default(autoincrement())
-  discordId String   @unique
+  money     Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  lend      User     @relation(name: "Lend", fields: [lendId], references: [discordId])
+  lendId    String
+  borrow    User     @relation(name: "Borrow", fields: [borrowId], references: [discordId])
+  borrowId  String
 }
