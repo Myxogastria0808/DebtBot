@@ -111,6 +111,7 @@ erDiagram
     Debt {
         Int id PK, UK "@id @default(autoincrement())"
         Int money
+        Boolean isPayOff
         DateTime createdAt "@default(now())"
         DateTime updatedAt "@updatedAt"
         BigInt lendId FK "@relation(name: 'Lend', fields: [lendId], references: [discordId])"

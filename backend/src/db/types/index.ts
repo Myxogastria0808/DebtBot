@@ -5,4 +5,14 @@ type UserDataType = {
     updatedAt: Date;
 };
 
-export { UserDataType };
+type DebtDataType = {
+    id: number;
+    money: number;
+    isPayOff: boolean;
+    createdAt: Date;
+    updatedAt: Date;
+    lendId: string;
+    borrowId: string;
+};
+
+export { UserDataType, DebtDataType };

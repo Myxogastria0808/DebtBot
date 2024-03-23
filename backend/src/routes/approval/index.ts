@@ -11,7 +11,6 @@ router.post('/', async (c) => {
     if (typeof discordId !== 'undefined') {
         if (await userExistValidator(discordId)) {
             return c.json({ authorization: 'You are authorized!' });
-            //処理
         } else {
             return c.json({ authorization: 'You are an unauthorized user.' });
         }

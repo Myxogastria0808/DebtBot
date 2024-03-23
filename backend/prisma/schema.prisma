@@ -25,6 +25,7 @@ model User {
 model Debt {
   id        Int      @id @default(autoincrement())
   money     Int
+  isPayOff  Boolean
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   lend      User     @relation(name: "Lend", fields: [lendId], references: [discordId])

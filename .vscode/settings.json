@@ -1,4 +1,9 @@
 {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[prisma]": {
+        "editor.defaultFormatter": "Prisma.prisma"
+    },
     "cSpell.words": [
         "AUTHURL",
         "CLIENTID",
@@ -7,6 +12,12 @@
         "GUILDID",
         "nyokinyokinyki",
         "REGISTERURL",
-        "slashcommands"
-    ]
+        "slashcommands",
+        "debtbot"
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.foreground": "#00afc2",
+        "activityBarBadge.background": "#008a99",
+        "activityBarBadge.foreground": "#ffffff"
+    }
 }
