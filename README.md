@@ -132,3 +132,7 @@ erDiagram
 #### `/approval`
 
 -   登録されているユーザーと登録されていないユーザーで、返す情報が変わるエンドポイント
+
+### 参考文献
+
+https://qiita.com/Mijinko/items/df3d2e1f90dbed5a4019

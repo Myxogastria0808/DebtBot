@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { UserDataType, DebtDataType } from 'types';
+import { UserDataType } from 'types';
 
 const prisma = new PrismaClient();
 
@@ -29,47 +29,6 @@ const deleteUser = async (discordId: string): Promise<void> => {
     const user: UserDataType = await prisma.user.delete({
         where: {
             discordId,
-        },
-    });
-};
-
-const createDebt = async (money: number, lendId: string, borrowId: string) => {
-    const debt: DebtDataType = await prisma.debt.create({
-        data: {
-            money,
-            isPayOff: false,
-            lendId,
-            borrowId,
-        },
-    });
-};
-
-const changePayOff = async (id: number) => {
-    const debt: DebtDataType = await prisma.debt.update({
-        where: {
-            id,
-        },
-        data: {
-            isPayOff: true,
-        },
-    });
-};
-
-const resetPayOff = async (id: number) => {
-    const debt: DebtDataType = await prisma.debt.update({
-        where: {
-            id,
-        },
-        data: {
-            isPayOff: false,
-        },
-    });
-};
-
-const deleteDebt = async (id: number) => {
-    const debt: DebtDataType = await prisma.debt.delete({
-        where: {
-            id,
         },
     });
 };

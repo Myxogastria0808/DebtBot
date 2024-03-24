@@ -1,11 +1,12 @@
 import { CacheType, Interaction, GatewayIntentBits, Client, Events } from 'discord.js';
 import dotenv from 'dotenv';
-import { registerUser, deleteUser, approvalCommand } from './commands/utilities/slashcommands';
+import { registerUser, deleteUser } from './commands/utilities/user';
+import { createDebt, amountDebt } from './commands/utilities/debt';
 
 dotenv.config();
 
 const client = new Client({
-    intents: [GatewayIntentBits.Guilds],
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions],
 });
 
 client.once('ready', () => {
@@ -51,9 +52,26 @@ client.on(Events.InteractionCreate, async (interaction: Interaction<CacheType>) 
                     });
                 }
             }
-        } else if (interaction.commandName === approvalCommand.data.name) {
+        } else if (interaction.commandName === createDebt.data.name) {
             try {
-                await approvalCommand.execute(interaction);
+                await createDebt.execute(interaction);
+            } catch (error) {
+                console.error(error);
+                if (interaction.replied || interaction.deferred) {
+                    await interaction.followUp({
+                        content: 'There was an error while executing this command!',
+                        ephemeral: true,
+                    });
+                } else {
+                    await interaction.reply({
+                        content: 'There was an error while executing this command!',
+                        ephemeral: true,
+                    });
+                }
+            }
+        } else if (interaction.commandName === amountDebt.data.name) {
+            try {
+                await amountDebt.execute(interaction);
             } catch (error) {
                 console.error(error);
                 if (interaction.replied || interaction.deferred) {

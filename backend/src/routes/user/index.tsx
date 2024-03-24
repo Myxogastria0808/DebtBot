@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import { titleClass, nameClass } from '../../components/css';
 import { meta } from '../../types/meta';
 import { tokenDataType, discordDataType } from '../../types/discord';
-import { registerUser, userExistValidator, deleteUser } from '../../db/orm';
+import { registerUser, userExistValidator, deleteUser } from '../../db/src/user';
 import { Base } from '../../components';
 
 dotenv.config();

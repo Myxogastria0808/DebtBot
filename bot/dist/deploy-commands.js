@@ -6,12 +6,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
 const dotenv_1 = __importDefault(require("dotenv"));
 const index_1 = require("./types/index");
-const slashcommands_1 = require("./commands/utilities/slashcommands");
+const user_1 = require("./commands/utilities/user");
+const debt_1 = require("./commands/utilities/debt");
 dotenv_1.default.config();
 const commands = [
-    slashcommands_1.registerUser.data.toJSON(),
-    slashcommands_1.deleteUser.data.toJSON(),
-    slashcommands_1.approvalCommand.data.toJSON(),
+    user_1.registerUser.data.toJSON(),
+    user_1.deleteUser.data.toJSON(),
+    debt_1.createDebt.data.toJSON(),
+    debt_1.amountDebt.data.toJSON(),
 ];
 const token = (0, index_1.checkIsString)(process.env.TOKEN);
 const applicationId = (0, index_1.checkIsString)(process.env.APPLICATIONID);

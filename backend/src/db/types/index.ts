@@ -15,4 +15,6 @@ type DebtDataType = {
     borrowId: string;
 };
 
-export { UserDataType, DebtDataType };
+type AmountDataType = { lendId: string; amount: number }[];
+
+export { UserDataType, DebtDataType, AmountDataType };
