@@ -1,7 +1,8 @@
 {
     "scripts": {
         "dev:hono": "tsx watch src/index.ts",
-        "dev:prisma": "ts-node-dev --project src/db/tsconfig.json src/db/orm.ts",
+        "dev:prisma:user": "ts-node-dev --project src/db/tsconfig.json src/db/src/user.ts",
+        "dev:prisma:debt": "ts-node-dev --project src/db/tsconfig.json src/db/src/debt.ts",
         "migrate": "prisma migrate dev --name init && prisma generate",
         "studio": "prisma studio --hostname \"127.0.0.2\""
     },
