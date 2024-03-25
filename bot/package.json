@@ -1,9 +1,9 @@
 {
-    "name": "discord-oauth",
+    "name": "debtbot",
     "version": "1.0.0",
-    "description": "This ia a discord OAuth sample.",
+    "description": "DebtBot is a debt management app.",
     "main": "src/index.ts",
-    "repository": "https://github.com/Myxogastria0808/discord-oauth.git",
+    "repository": "https://github.com/Myxogastria0808/DebtBot.git",
     "author": "'Myxogastria0808' <r.rstudio.c@gmail.com>",
     "license": "MIT",
     "scripts": {

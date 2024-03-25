@@ -1,4 +1,11 @@
 {
+    "name": "debtbot",
+    "version": "1.0.0",
+    "description": "DebtBot is a debt management app.",
+    "main": "src/index.ts",
+    "repository": "https://github.com/Myxogastria0808/DebtBot.git",
+    "author": "'Myxogastria0808' <r.rstudio.c@gmail.com>",
+    "license": "MIT",
     "scripts": {
         "dev:hono": "tsx watch src/index.ts",
         "dev:prisma:user": "ts-node-dev --project src/db/tsconfig.json src/db/src/user.ts",
