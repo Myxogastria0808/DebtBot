@@ -105,7 +105,7 @@ erDiagram
     User ||--|{ Debt : lend
     User ||--|{ Debt : borrow
     User {
-        BigInt discordId PK, UK "@id @unique"
+        String discordId PK, UK "@id @unique"
         String discordName
         DateTime createdAt "@default(now())"
         DateTime updatedAt "@updatedAt"
@@ -118,8 +118,8 @@ erDiagram
         Boolean isPayOff
         DateTime createdAt "@default(now())"
         DateTime updatedAt "@updatedAt"
-        BigInt lendId FK "@relation(name: 'Lend', fields: [lendId], references: [discordId])"
-        BigInt borrowId FK "@relation(name: 'Borrow', fields: [borrowId], references: [discordId])"
+        String lendId FK "@relation(name: 'Lend', fields: [lendId], references: [discordId])"
+        String borrowId FK "@relation(name: 'Borrow', fields: [borrowId], references: [discordId])"
     }
 ```
 
