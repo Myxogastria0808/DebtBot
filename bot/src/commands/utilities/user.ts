@@ -32,7 +32,7 @@ const registerUser = {
             const row = new ActionRowBuilder<ButtonBuilder>().addComponents(registerUserLinkButton);
 
             const response = await interaction.reply({
-                content: '以下のボタンをクリックしてユーザーの登録絵をしてください。',
+                content: '以下のボタンをクリックしてユーザーの登録をしてください。',
                 components: [row],
             });
 
