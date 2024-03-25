@@ -137,11 +137,11 @@ erDiagram
 
 -   借金情報を追加するエンドポイント
 
-#### `/pay-off`
+#### `/debt/pay-off`
 
 -   `isPayOff`を`false`から`true`に変えるエンドポイント
 
-#### `/amount`
+#### `/debt/amount`
 
 -   誰にどれくらい借金をしているかについての情報を返すエンドポイント
 
