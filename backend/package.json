@@ -6,7 +6,7 @@
         "studio": "prisma studio"
     },
     "dependencies": {
-        "@hono/node-server": "^1.8.2",
+        "@hono/node-server": "^1.9.0",
         "@prisma/client": "^5.11.0",
         "hono": "^4.1.3"
     },
