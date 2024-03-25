@@ -34,39 +34,3 @@ const deleteUser = async (discordId: string): Promise<void> => {
 };
 
 export { registerUser, userExistValidator, deleteUser };
-
-////////////////////////////////////////////
-
-// const debtCreate = async () => {
-//     const debt = await prisma.debt.createMany({
-//         data: [
-//             {
-//                 money: 120,
-//                 lendId: 792738692208394200,
-//                 borrowId: 9876543210987654,
-//             },
-//             {
-//                 money: 10,
-//                 lendId: 9876543210987654,
-//                 borrowId: 792738692208394200,
-//             },
-//             {
-//                 money: 10,
-//                 lendId: 792738692208394200,
-//                 borrowId: 9876543210987654,
-//             },
-//         ],
-//     });
-// };
-
-// debtCreate();
-
-// const debtDelete = async () => {
-//     const debt = await prisma.debt.delete({
-//         where: {
-//             id: 6,
-//         },
-//     });
-// };
-
-// debtDelete();

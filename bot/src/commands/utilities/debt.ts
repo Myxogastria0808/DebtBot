@@ -6,6 +6,7 @@ import { amountDebtAuthorizationDataType, createDebtAuthorizationDataType } from
 dotenv.config();
 
 const guildId = checkIsString(process.env.GUILDID);
+const webApiUrl = checkIsString(process.env.WEBAPIURL);
 
 const createDebt = {
     data: new SlashCommandBuilder()
@@ -24,7 +25,7 @@ const createDebt = {
                 await interaction.editReply('You have entered invalid data.');
             } else {
                 try {
-                    const debtCreateData: Response = await fetch('http://127.0.0.1:3000/debt/create', {
+                    const debtCreateData: Response = await fetch(`${webApiUrl}/debt/create`, {
                         method: 'POST',
                         headers: {
                             Authorization: `${interaction.user.id}`,
@@ -81,8 +82,8 @@ const createDebt = {
                         const user: string | undefined = users[1];
                         if (typeof user === 'undefined') return;
                         //チェックマークを押した後の処理
-                        const debtPayOffData: Response = await fetch('http://127.0.0.1:3000/debt/pay-off', {
-                            method: 'POST',
+                        const debtPayOffData: Response = await fetch(`${webApiUrl}/debt/pay-off`, {
+                            method: 'PATCH',
                             headers: {
                                 Authorization: `${interaction.user.id}`,
                                 'Content-Type': 'application/json',
@@ -123,7 +124,7 @@ const amountDebt = {
                 await interaction.editReply('You have entered invalid data.');
             } else {
                 try {
-                    const debtCreateData: Response = await fetch('http://127.0.0.1:3000/debt/amount', {
+                    const debtCreateData: Response = await fetch(`${webApiUrl}/debt/amount`, {
                         method: 'POST',
                         headers: {
                             Authorization: `${interaction.user.id}`,

@@ -14,10 +14,6 @@ const app = new Hono();
 app.route('/user', user);
 app.route('/debt', debt);
 
-app.get('/', (c) => {
-    return c.text('Hello, World!');
-});
-
 console.log(`Server is running on port http://${ipaddress}:${port}`);
 
 serve({

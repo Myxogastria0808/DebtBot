@@ -3,7 +3,7 @@ import { Meta } from '../../types/meta';
 import { html } from 'hono/html';
 import { Style } from 'hono/css';
 
-const Base: FC<{ meta: Meta; children: any }> = memo((props: { meta: Meta; children: any }) => {
+const Base: FC<{ meta: Meta; children: JSX.Element }> = (props: { meta: Meta; children: JSX.Element }) => {
     return (
         <>
             {html`<!DOCTYPE html>`}
@@ -26,6 +26,6 @@ const Base: FC<{ meta: Meta; children: any }> = memo((props: { meta: Meta; child
             </html>
         </>
     );
-});
+};
 
 export default Base;

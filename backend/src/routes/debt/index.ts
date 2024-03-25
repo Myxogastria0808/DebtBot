@@ -24,7 +24,7 @@ router.post('/create', async (c) => {
     }
 });
 
-router.post('/pay-off', async (c) => {
+router.patch('/pay-off', async (c) => {
     const discordId: string | undefined = c.req.header('Authorization');
     const { debtId } = await c.req.json<{ debtId: number }>();
     if (typeof discordId !== 'undefined') {

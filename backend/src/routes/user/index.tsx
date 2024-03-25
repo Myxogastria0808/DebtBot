@@ -26,20 +26,21 @@ router.get('/register', async (c) => {
     //* ***************************************//
     if (typeof code == 'undefined') {
         //codeが取得できなかった場合
+        console.log('========================================');
+        console.log('/user/register');
         return c.html(
             <>
                 <Base meta={meta}>
-                    <h1 className={titleClass}>OAuth authentication failed.</h1>
+                    <>
+                        <h1 className={titleClass}>OAuth authentication failed.</h1>
+                    </>
                 </Base>
             </>
         );
     } else {
-        //codeが取得できた場合
-        console.log(`code: ${code}`);
         try {
             //* ***************************************//
             const body = `client_id=${clientId}&client_secret=${clientSecret}&grant_type=authorization_code&code=${code}&redirect_uri=${registerRedirectUrl}`;
-            console.log(`${body}`);
             //トークンを取得する
             const tokenData = await fetch('https://discordapp.com/api/oauth2/token', {
                 method: 'POST',
@@ -59,7 +60,6 @@ router.get('/register', async (c) => {
             //* ***************************************//
             //* ***************************************//
             //ユーザーが存在するかどうかチェック
-            console.log(`discord UserID: ${discord.id}`);
             const validator: boolean = await userExistValidator(discord.id);
             if (!validator) {
                 //ユーザーの登録
@@ -77,8 +77,10 @@ router.get('/register', async (c) => {
             return c.html(
                 <>
                     <Base meta={meta}>
-                        <h1 class={titleClass}>OAuth authentication succeeded.</h1>
-                        <h2 class={nameClass}>{discord.username}</h2>
+                        <>
+                            <h1 class={titleClass}>OAuth authentication succeeded.</h1>
+                            <h2 class={nameClass}>{discord.username}</h2>
+                        </>
                     </Base>
                 </>
             );
@@ -101,6 +103,8 @@ router.get('/delete', async (c) => {
     //* ***************************************//
     if (typeof code == 'undefined') {
         //codeが取得できなかった場合
+        console.log('========================================');
+        console.log('/user/delete');
         return c.html(
             <>
                 <Base meta={meta}>
@@ -109,12 +113,9 @@ router.get('/delete', async (c) => {
             </>
         );
     } else {
-        //codeが取得できた場合
-        console.log(`code: ${code}`);
         try {
             //* ***************************************//
             const body = `client_id=${clientId}&client_secret=${clientSecret}&grant_type=authorization_code&code=${code}&redirect_uri=${deleteRedirectUrl}`;
-            console.log(`${body}`);
             //トークンを取得する
             const tokenData = await fetch('https://discordapp.com/api/oauth2/token', {
                 method: 'POST',
@@ -123,7 +124,6 @@ router.get('/delete', async (c) => {
             });
             const IncludesToken: tokenDataType = await tokenData.json();
             const token: string = IncludesToken.access_token;
-            console.log(`token: ${token}`);
             //* ***************************************//
             //ユーザーIDを取得する
             const discordData = await fetch('https://discordapp.com/api/users/@me', {
@@ -133,13 +133,20 @@ router.get('/delete', async (c) => {
             const discord: discordDataType = await discordData.json();
             //* ***************************************//
             //* ***************************************//
-            //ユーザーが存在するかどうかチェック
-            console.log(`discord UserID: ${discord.id}`);
             const validator: boolean = await userExistValidator(discord.id);
             if (validator) {
-                //ユーザーの削除
-                await deleteUser(discord.id);
-
+                try {
+                    //ユーザーの削除
+                    await deleteUser(discord.id);
+                } catch (_e: any) {
+                    return c.html(
+                        <>
+                            <Base meta={meta}>
+                                <h1 class={titleClass}>{discord.username} can not delete user data.</h1>
+                            </Base>
+                        </>
+                    );
+                }
                 return c.html(
                     <>
                         <Base meta={meta}>

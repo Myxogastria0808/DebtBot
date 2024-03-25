@@ -9,6 +9,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const types_1 = require("../../types");
 dotenv_1.default.config();
 const guildId = (0, types_1.checkIsString)(process.env.GUILDID);
+const webApiUrl = (0, types_1.checkIsString)(process.env.WEBAPIURL);
 const createDebt = {
     data: new discord_js_1.SlashCommandBuilder()
         .setName('create-debt')
@@ -27,7 +28,7 @@ const createDebt = {
             }
             else {
                 try {
-                    const debtCreateData = await fetch('http://127.0.0.1:3000/debt/create', {
+                    const debtCreateData = await fetch(`${webApiUrl}/debt/create`, {
                         method: 'POST',
                         headers: {
                             Authorization: `${interaction.user.id}`,
@@ -79,8 +80,8 @@ const createDebt = {
                         if (typeof user === 'undefined')
                             return;
                         //チェックマークを押した後の処理
-                        const debtPayOffData = await fetch('http://127.0.0.1:3000/debt/pay-off', {
-                            method: 'POST',
+                        const debtPayOffData = await fetch(`${webApiUrl}/debt/pay-off`, {
+                            method: 'PATCH',
                             headers: {
                                 Authorization: `${interaction.user.id}`,
                                 'Content-Type': 'application/json',
@@ -124,7 +125,7 @@ const amountDebt = {
             }
             else {
                 try {
-                    const debtCreateData = await fetch('http://127.0.0.1:3000/debt/amount', {
+                    const debtCreateData = await fetch(`${webApiUrl}/debt/amount`, {
                         method: 'POST',
                         headers: {
                             Authorization: `${interaction.user.id}`,

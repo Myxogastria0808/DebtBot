@@ -8,12 +8,14 @@
         "AUTHURL",
         "CLIENTID",
         "CLIENTSECRET",
+        "debtbot",
         "DELETEURL",
         "GUILDID",
+        "Jsonify",
         "nyokinyokinyki",
         "REGISTERURL",
         "slashcommands",
-        "debtbot"
+        "WEBAPIURL"
     ],
     "workbench.colorCustomizations": {
         "activityBar.foreground": "#00afc2",
