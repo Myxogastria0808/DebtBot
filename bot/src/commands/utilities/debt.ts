@@ -2,6 +2,7 @@ import { Collection, CommandInteraction, Message, MessageReaction, SlashCommandB
 import dotenv from 'dotenv';
 import { checkIsString } from '../../types';
 import { amountDebtAuthorizationDataType, createDebtAuthorizationDataType } from 'src/types/debt';
+import { ADDRGETNETWORKPARAMS } from 'dns';
 
 dotenv.config();
 
@@ -139,9 +140,17 @@ const amountDebt = {
                     if (typeof data.amount === 'undefined') return;
                     let resultMessage: string = '';
                     data.amount.forEach((eachAmount) => {
-                        resultMessage += `<@!${discordId}>の<@!${eachAmount.lendId}>に対しての借金額: ${eachAmount.amount}円\n`;
+                        if (discordId === eachAmount.lendId) {
+                            resultMessage += '';
+                        } else {
+                            resultMessage += `<@!${discordId}>の<@!${eachAmount.lendId}>に対しての借金額: ${eachAmount.amount}円\n`;
+                        }
                     });
-                    await interaction.followUp(resultMessage);
+                    if (resultMessage.length === 0) {
+                        await interaction.followUp('あなたは現在、誰からも借金をしていません。');
+                    } else {
+                        await interaction.followUp(resultMessage);
+                    }
                 } catch (_e: any) {
                     await interaction.editReply('Fetch error is ocurred.');
                 }

@@ -141,9 +141,19 @@ const amountDebt = {
                         return;
                     let resultMessage = '';
                     data.amount.forEach((eachAmount) => {
-                        resultMessage += `<@!${discordId}>の<@!${eachAmount.lendId}>に対しての借金額: ${eachAmount.amount}円\n`;
+                        if (discordId === eachAmount.lendId) {
+                            resultMessage += '';
+                        }
+                        else {
+                            resultMessage += `<@!${discordId}>の<@!${eachAmount.lendId}>に対しての借金額: ${eachAmount.amount}円\n`;
+                        }
                     });
-                    await interaction.followUp(resultMessage);
+                    if (resultMessage.length === 0) {
+                        await interaction.followUp('あなたは現在、誰からも借金をしていません。');
+                    }
+                    else {
+                        await interaction.followUp(resultMessage);
+                    }
                 }
                 catch (_e) {
                     await interaction.editReply('Fetch error is ocurred.');

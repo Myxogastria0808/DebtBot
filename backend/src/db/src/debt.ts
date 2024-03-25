@@ -16,7 +16,7 @@ const createDebt = async (money: number, lendId: string, borrowId: string): Prom
 };
 
 const changePayOff = async (id: number) => {
-    const debt: DebtDataType = await prisma.debt.update({
+    await prisma.debt.update({
         where: {
             id,
         },
@@ -27,7 +27,7 @@ const changePayOff = async (id: number) => {
 };
 
 const cancelPayOff = async (id: number) => {
-    const debt: DebtDataType = await prisma.debt.update({
+    await prisma.debt.update({
         where: {
             id,
         },
@@ -41,9 +41,10 @@ const checkDebtAmount = async (discordId: string): Promise<AmountDataType> => {
     const debt: DebtDataType[] = await prisma.debt.findMany({
         where: {
             borrowId: discordId,
+            isPayOff: false,
         },
     });
-    let amount: AmountDataType = [];
+    let amount: AmountDataType = [{ lendId: discordId, amount: 0 }];
     debt.forEach((debtData) => {
         let isHit: boolean = false;
         amount.forEach((eachAmount) => {
@@ -60,11 +61,11 @@ const checkDebtAmount = async (discordId: string): Promise<AmountDataType> => {
 };
 
 const deleteDebt = async (id: number) => {
-    const debt: DebtDataType = await prisma.debt.delete({
+    await prisma.debt.delete({
         where: {
             id,
         },
     });
 };
 
-export { createDebt, changePayOff, checkDebtAmount, deleteDebt };
+export { createDebt, changePayOff, checkDebtAmount };

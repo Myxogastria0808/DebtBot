@@ -43,7 +43,6 @@ router.post('/amount', async (c) => {
     const { discordUserId } = await c.req.json<{ discordUserId: string }>();
     if (typeof discordId !== 'undefined') {
         if (await userExistValidator(discordId)) {
-            console.log(`debtId: ${discordUserId}`);
             const amount: AmountDataType = await checkDebtAmount(discordUserId);
             return c.json({ authorization: 'You are authorized!', amount });
         } else {

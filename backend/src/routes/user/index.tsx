@@ -6,6 +6,7 @@ import { meta } from '../../types/meta';
 import { tokenDataType, discordDataType } from '../../types/discord';
 import { registerUser, userExistValidator, deleteUser } from '../../db/src/user';
 import { Base } from '../../components';
+import { deleteUserResultType } from '../../db/types';
 
 dotenv.config();
 
@@ -63,6 +64,17 @@ router.get('/register', async (c) => {
             if (!validator) {
                 //ユーザーの登録
                 await registerUser(discord.id, discord.username);
+
+                return c.html(
+                    <>
+                        <Base meta={meta}>
+                            <>
+                                <h1 class={titleClass}>OAuth authentication succeeded.</h1>
+                                <h2 class={nameClass}>{discord.username}</h2>
+                            </>
+                        </Base>
+                    </>
+                );
             } else {
                 return c.html(
                     <>
@@ -73,21 +85,11 @@ router.get('/register', async (c) => {
                 );
             }
             //* ***************************************//
-            return c.html(
-                <>
-                    <Base meta={meta}>
-                        <>
-                            <h1 class={titleClass}>OAuth authentication succeeded.</h1>
-                            <h2 class={nameClass}>{discord.username}</h2>
-                        </>
-                    </Base>
-                </>
-            );
         } catch (_e) {
             return c.html(
                 <>
                     <Base meta={meta}>
-                        <h1 class={titleClass}>OAuth authentication failed.</h1>
+                        <h1 class={titleClass}>Unexpected error.</h1>
                     </Base>
                 </>
             );
@@ -132,12 +134,22 @@ router.get('/delete', async (c) => {
             const discord: discordDataType = await discordData.json();
             //* ***************************************//
             //* ***************************************//
+            //ユーザーが存在するかどうかチェック
             const validator: boolean = await userExistValidator(discord.id);
             if (validator) {
-                try {
-                    //ユーザーの削除
-                    await deleteUser(discord.id);
-                } catch (_e: any) {
+                //ユーザーの削除
+                const isSuccess: deleteUserResultType = await deleteUser(discord.id);
+
+                //ユーザー削除が成功したかどうかで分岐
+                if (isSuccess === 'success') {
+                    return c.html(
+                        <>
+                            <Base meta={meta}>
+                                <h1 class={titleClass}>{discord.username} successfully deleted.</h1>
+                            </Base>
+                        </>
+                    );
+                } else {
                     return c.html(
                         <>
                             <Base meta={meta}>
@@ -146,13 +158,6 @@ router.get('/delete', async (c) => {
                         </>
                     );
                 }
-                return c.html(
-                    <>
-                        <Base meta={meta}>
-                            <h1 class={titleClass}>{discord.username} successfully deleted.</h1>
-                        </Base>
-                    </>
-                );
             } else {
                 return c.html(
                     <>
@@ -167,7 +172,7 @@ router.get('/delete', async (c) => {
             return c.html(
                 <>
                     <Base meta={meta}>
-                        <h1 class={titleClass}>OAuth authentication failed.</h1>
+                        <h1 class={titleClass}>Unexpected error.</h1>
                     </Base>
                 </>
             );

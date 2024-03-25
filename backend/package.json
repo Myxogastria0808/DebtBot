@@ -3,7 +3,7 @@
         "dev:hono": "tsx watch src/index.ts",
         "dev:prisma": "ts-node-dev --project src/db/tsconfig.json src/db/orm.ts",
         "migrate": "prisma migrate dev --name init && prisma generate",
-        "studio": "prisma studio"
+        "studio": "prisma studio --hostname \"127.0.0.2\""
     },
     "dependencies": {
         "@hono/node-server": "^1.9.0",

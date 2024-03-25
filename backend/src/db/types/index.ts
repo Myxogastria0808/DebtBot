@@ -17,4 +17,6 @@ type DebtDataType = {
 
 type AmountDataType = { lendId: string; amount: number }[];
 
-export { UserDataType, DebtDataType, AmountDataType };
+type deleteUserResultType = 'success' | 'failed';
+
+export { UserDataType, DebtDataType, AmountDataType, deleteUserResultType };
