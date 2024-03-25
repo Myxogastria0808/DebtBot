@@ -13,7 +13,6 @@ router.post('/create', async (c) => {
     const { lend, money, borrow } = await c.req.json<{ lend: string; money: number; borrow: string }>();
     if (typeof discordId !== 'undefined') {
         if (await userExistValidator(discordId)) {
-            console.log(`lend: ${lend}, money: ${money}, borrow: ${borrow}`);
             const debtId: number = await createDebt(money, lend, borrow);
             return c.json({ authorization: 'You are authorized!', debtId: debtId });
         } else {
@@ -29,7 +28,6 @@ router.patch('/pay-off', async (c) => {
     const { debtId } = await c.req.json<{ debtId: number }>();
     if (typeof discordId !== 'undefined') {
         if (await userExistValidator(discordId)) {
-            console.log(`debtId: ${debtId}`);
             await changePayOff(debtId);
             return c.json({ authorization: 'You are authorized!', debtId: debtId });
         } else {

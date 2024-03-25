@@ -59,6 +59,9 @@ bash make-env.sh
 > [!NOTE]
 > 空の文字列(または数字)に適切な情報を入力してください。
 
+> [!NOTE]
+> WEBAPIURL は、適宜変えてください。
+
 > [!CAUTION]
 > 　 `.env`ファイルに書く内容は、外部に漏れてはいけない内容なので、必ず`.gitignore`ファイルに`.env`を書いてください。
 
@@ -68,6 +71,7 @@ APPLICATIONID = ""
 GUILDID = ""
 REGISTERURL = ""
 DELETEURL = ""
+WEBAPIURL = "http://127.0.0.1:3000"
 
 ```
 
@@ -88,7 +92,7 @@ PORT = "3000"
 CLIENTID = ""
 CLIENTSECRET = ""
 
-#以下はPrismaによって自動生成されるの省略
+#以下はPrismaによって自動生成されるので、省略
 # This was inserted by ~
 
 
@@ -129,9 +133,17 @@ erDiagram
 
 -   登録されているユーザーの登録を削除するエンドポイント
 
-#### `/approval`
+#### `/debt/create`
 
--   登録されているユーザーと登録されていないユーザーで、返す情報が変わるエンドポイント
+-   借金情報を追加するエンドポイント
+
+#### `/pay-off`
+
+-   `isPayOff`を`false`から`true`に変えるエンドポイント
+
+#### `/amount`
+
+-   誰にどれくらい借金をしているかについての情報を返すエンドポイント
 
 ### 参考文献
 

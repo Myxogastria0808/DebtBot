@@ -26,6 +26,7 @@ APPLICATIONID = ""
 GUILDID = ""
 REGISTERURL = ""
 DELETEURL = ""
+WEBAPIURL = ""
 EOT
 else
     echo bot/.env is already exits.

@@ -49,7 +49,6 @@ router.get('/register', async (c) => {
             });
             const IncludesToken: tokenDataType = await tokenData.json();
             const token: string = IncludesToken.access_token;
-            console.log(`token: ${token}`);
             //* ***************************************//
             //ユーザーIDを取得する
             const discordData = await fetch('https://discordapp.com/api/users/@me', {

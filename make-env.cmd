@@ -14,6 +14,7 @@ if not exist %~dp0bot\.env (
     echo GUILDID = "">> ./bot/.env
     echo REGISTERURL = "">> ./bot/.env
     echo DELETEURL = "">> ./bot/.env
+    echo WEBAPIURL = "">> ./bot/.env
 ) else (
     echo bot\.env is already exits.
 )
