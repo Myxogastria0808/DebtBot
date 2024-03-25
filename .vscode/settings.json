@@ -5,6 +5,7 @@
         "editor.defaultFormatter": "Prisma.prisma"
     },
     "cSpell.words": [
+        "APPLICATIONID",
         "AUTHURL",
         "CLIENTID",
         "CLIENTSECRET",
