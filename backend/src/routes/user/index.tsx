@@ -34,6 +34,8 @@ router.get('/register', async (c) => {
                 <Base meta={meta}>
                     <>
                         <h1 className={titleClass}>OAuth authentication failed.</h1>
+                        <img src="../../static/deer.svg" style={{ width: '100px', height: '100px' }} alt="Deer SVG" />
+                        <img src="https://yukiosada.work/CG-Animation.webp" style={{ width: '100px' }} alt="Deer SVG" />
                     </>
                 </Base>
             </>
