@@ -31,7 +31,7 @@ const createDebt = {
                     const debtCreateData = await fetch(`${webApiUrl}/debt/create`, {
                         method: 'POST',
                         headers: {
-                            Authorization: `${interaction.user.id}`,
+                            Authorization: `${interaction.user.id} ${interaction.guild?.id}`,
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({
@@ -62,10 +62,6 @@ const createDebt = {
                             max: 1,
                             errors: ['time'],
                         });
-                        console.log(reaction.size);
-                        console.log(`Collected ${reaction.first()?.emoji.name} from ${reaction
-                            .first()
-                            ?.users.cache.map((user) => user.tag)}`);
                         await message.reactions
                             .removeAll()
                             .catch((error) => console.error('Failed to clear reactions:', error));
@@ -83,7 +79,7 @@ const createDebt = {
                         const debtPayOffData = await fetch(`${webApiUrl}/debt/pay-off`, {
                             method: 'PATCH',
                             headers: {
-                                Authorization: `${interaction.user.id}`,
+                                Authorization: `${interaction.user.id} ${interaction.guild?.id}`,
                                 'Content-Type': 'application/json',
                             },
                             body: JSON.stringify({
@@ -128,7 +124,7 @@ const amountDebt = {
                     const debtCreateData = await fetch(`${webApiUrl}/debt/amount`, {
                         method: 'POST',
                         headers: {
-                            Authorization: `${interaction.user.id}`,
+                            Authorization: `${interaction.user.id} ${interaction.guild?.id}`,
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({

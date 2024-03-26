@@ -25,6 +25,7 @@ if not exist %~dp0backend\.env (
     echo PORT = "3000">> ./backend/.env
     echo CLIENTID = "">> ./backend/.env
     echo CLIENTSECRET = "">> ./backend/.env
+    echo GUILDID = "">> ./backend/.env
 ) else (
     echo backend\.env is already exits.
 )

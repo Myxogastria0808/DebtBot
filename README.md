@@ -91,6 +91,7 @@ IPADDRESS = "127.0.0.1"
 PORT = "3000"
 CLIENTID = ""
 CLIENTSECRET = ""
+GUILDID = ""
 
 #以下はPrismaによって自動生成されるので、省略
 # This was inserted by ~
@@ -122,6 +123,14 @@ erDiagram
         String borrowId FK "@relation(name: 'Borrow', fields: [borrowId], references: [discordId])"
     }
 ```
+
+## WebAPI のオリジン
+
+http://127.0.0.1:3000
+
+## Prisma Studio のオリジン
+
+http://127.0.0.2:5555
 
 ## Web API のエンドポイント
 

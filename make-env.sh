@@ -39,6 +39,7 @@ IPADDRESS = "127.0.0.1"
 PORT = "3000"
 CLIENTID = ""
 CLIENTSECRET = ""
+GUILDID = ""
 EOT
 else
     echo backend/.env is already exits.

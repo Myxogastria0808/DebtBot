@@ -21,7 +21,7 @@ const registerUser = {
                 .setStyle(discord_js_1.ButtonStyle.Link);
             const row = new discord_js_1.ActionRowBuilder().addComponents(registerUserLinkButton);
             const response = await interaction.reply({
-                content: '以下のボタンをクリックしてユーザーの登録絵をしてください。',
+                content: '以下のボタンをクリックしてユーザーの登録をしてください。',
                 components: [row],
             });
             //スラッシュコマンドを入力したユーザーのみがコンポーネントの操作ができる

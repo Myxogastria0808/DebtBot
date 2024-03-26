@@ -2,7 +2,6 @@ import { Collection, CommandInteraction, Message, MessageReaction, SlashCommandB
 import dotenv from 'dotenv';
 import { checkIsString } from '../../types';
 import { amountDebtAuthorizationDataType, createDebtAuthorizationDataType } from 'src/types/debt';
-import { ADDRGETNETWORKPARAMS } from 'dns';
 
 dotenv.config();
 
@@ -29,7 +28,7 @@ const createDebt = {
                     const debtCreateData: Response = await fetch(`${webApiUrl}/debt/create`, {
                         method: 'POST',
                         headers: {
-                            Authorization: `${interaction.user.id}`,
+                            Authorization: `${interaction.user.id} ${interaction.guild?.id}`,
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({
@@ -65,13 +64,6 @@ const createDebt = {
                             max: 1,
                             errors: ['time'],
                         });
-                        console.log(reaction.size);
-                        console.log(
-                            `Collected ${reaction.first()?.emoji.name} from ${reaction
-                                .first()
-                                ?.users.cache.map((user) => user.tag)}`
-                        );
-
                         await message.reactions
                             .removeAll()
                             .catch((error) => console.error('Failed to clear reactions:', error));
@@ -86,7 +78,7 @@ const createDebt = {
                         const debtPayOffData: Response = await fetch(`${webApiUrl}/debt/pay-off`, {
                             method: 'PATCH',
                             headers: {
-                                Authorization: `${interaction.user.id}`,
+                                Authorization: `${interaction.user.id} ${interaction.guild?.id}`,
                                 'Content-Type': 'application/json',
                             },
                             body: JSON.stringify({
@@ -105,7 +97,7 @@ const createDebt = {
                 }
             }
         } else {
-            await interaction.editReply('You are not guild member.');
+            await interaction.editReply('あなたは、ギルドメンバーではありません。');
         }
     },
 };
@@ -128,7 +120,7 @@ const amountDebt = {
                     const debtCreateData: Response = await fetch(`${webApiUrl}/debt/amount`, {
                         method: 'POST',
                         headers: {
-                            Authorization: `${interaction.user.id}`,
+                            Authorization: `${interaction.user.id} ${interaction.guild?.id}`,
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({
@@ -156,7 +148,7 @@ const amountDebt = {
                 }
             }
         } else {
-            await interaction.editReply('You are not guild member.');
+            await interaction.editReply('あなたは、ギルドメンバーではありません。');
         }
     },
 };
