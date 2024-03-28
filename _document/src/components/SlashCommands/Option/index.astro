@@ -1,0 +1,37 @@
+---
+interface Props {
+    optionName: string;
+}
+
+const { optionName } = Astro.props;
+---
+
+<>
+    <div class="option">
+        <h2 class="option-h2">{optionName}</h2>
+        <div class="option-div"></div>
+    </div>
+</>
+
+<style>
+    .option {
+        margin-top: 10px;
+        height: 30px;
+        border-radius: 10px;
+        background-color: #b5dad8;
+        display: flex;
+        border: #88a8a7 solid 2px;
+    }
+    .option-h2 {
+        margin-left: 10px;
+        font-size: 20px;
+        line-height: 28px;
+    }
+    .option-div {
+        margin-left: 10px;
+        height: 100%;
+        width: 30px;
+        background-color: #88a8a7;
+        border-radius: 0px 8px 8px 0px;
+    }
+</style>

@@ -1,0 +1,46 @@
+---
+interface Props {
+    title: string;
+    content: string;
+}
+
+const { title, content } = Astro.props;
+---
+
+<div id="container">
+    <div id="slash-command-div">
+        <h2 id="slash-command">{title}</h2>
+        <slot />
+    </div>
+    <p id="content">{content}</p>
+</div>
+
+<style>
+    #container {
+        width: 100%;
+        display: grid;
+        grid-template-areas:
+            'SlashCommand'
+            'Content';
+        grid-template-rows: 50px 30px;
+        grid-template-columns: 100%;
+        background-color: #cdeae9;
+    }
+    #slash-command-div {
+        grid-area: SlashCommand;
+        width: 100%;
+        text-align: start;
+        display: flex;
+        gap: 10px;
+    }
+    #slash-command {
+        font-size: 25px;
+        line-height: 50px;
+    }
+    #content {
+        grid-area: Content;
+        width: 100%;
+        text-align: start;
+        font-size: 20px;
+    }
+</style>

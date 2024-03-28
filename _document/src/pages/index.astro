@@ -1,9 +1,30 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Top from '../components/Top/index.astro';
+import WhatIsDebtBot from '../components/WhatIsDebtBot/index.astro';
+import SlashCommands from '../components/SlashCommands/index.astro';
+import Structure from '../components/Structure/index.astro';
+import Security from '../components/Security/index.astro';
+import WebAPI from '../components/WebAPI/index.astro';
+import Database from '../components/Database/index.astro';
 ---
 
 <Layout title="DebtBot">
-    <h1>DebtBot</h1>
+    <div class="container">
+        <Top />
+        <WhatIsDebtBot />
+        <SlashCommands />
+        <Structure />
+        <Security />
+        <WebAPI />
+        <Database />
+    </div>
 </Layout>
 
-<style></style>
+<style>
+    .container {
+        margin: 0 auto 100px auto;
+        max-width: 900px;
+        width: 100%;
+    }
+</style>

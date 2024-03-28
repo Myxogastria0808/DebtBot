@@ -1,0 +1,41 @@
+<div id="container">
+    <div id="deer">
+        <img src="/deer.svg" />
+    </div>
+    <h1 id="title">DebtBot</h1>
+    <h2 id="subtitle">借金管理 Discord Bot</h2>
+</div>
+
+<style>
+    #container {
+        width: 100%;
+        display: grid;
+        grid-template-areas:
+            '.    .       '
+            'Deer .       '
+            'Deer Title   '
+            'Deer SubTitle'
+            'Deer .       ';
+        grid-template-rows: 100px 270px 100px 50px 100px;
+        grid-template-columns: 40% 60%;
+        background-color: #cdeae9;
+    }
+    #deer {
+        grid-area: Deer;
+        width: 100%;
+    }
+    #title {
+        grid-area: Title;
+        width: 100%;
+        font-size: 50px;
+        text-align: center;
+        line-height: 100px;
+    }
+    #subtitle {
+        grid-area: SubTitle;
+        width: 100%;
+        font-size: 25px;
+        text-align: center;
+        line-height: 50px;
+    }
+</style>

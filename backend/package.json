@@ -1,6 +1,6 @@
 {
-    "name": "debtbot",
-    "version": "1.0.0",
+    "name": "debtbot-backend",
+    "version": "0.0.1",
     "description": "DebtBot is a debt management app.",
     "main": "src/index.ts",
     "repository": "https://github.com/Myxogastria0808/DebtBot.git",

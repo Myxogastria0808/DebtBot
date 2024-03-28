@@ -1,0 +1,43 @@
+---
+import SlashCommand from './SlashCommand/index.astro';
+import Option from './Option/index.astro';
+
+const registerUser: string = 'ユーザーの登録を行うスラッシュコマンド';
+const deleteUser: string = 'ユーザーの削除を行うスラッシュコマンド';
+const createUser: string = '借金情報の登録を行うスラッシュコマンド';
+const amount: string = '誰からどれくらい借りているかを確認するスラッシュコマンド';
+---
+
+<div id="container">
+    <h1 id="title">SlashCommands</h1>
+    <SlashCommand title="/register-user" content={registerUser} />
+    <div id="head-space"></div>
+    <SlashCommand title="/delete-user" content={deleteUser} />
+    <div id="head-space"></div>
+    <SlashCommand title="/create-debt" content={createUser}>
+        <Option optionName="lend" />
+        <Option optionName="money" />
+        <Option optionName="borrow" />
+    </SlashCommand>
+    <div id="head-space"></div>
+    <SlashCommand title="/amount" content={amount}>
+        <Option optionName="check-user" />
+    </SlashCommand>
+
+    <style>
+        #container {
+            width: 100%;
+        }
+        #title {
+            width: 100%;
+            text-align: start;
+            font-size: 30px;
+            margin-top: 100px;
+            line-height: 50px;
+        }
+        #head-space {
+            height: 40px;
+            width: 100%;
+        }
+    </style>
+</div>

@@ -1,0 +1,39 @@
+---
+import EndPoint from './EndPoint/index.astro';
+
+const registerUser: string = 'ユーザーの登録を行うエンドポイント';
+const deleteUser: string = 'ユーザーの削除を行うエンドポイント';
+const createDebt: string = '借金情報を追加するエンドポイント';
+const payOff: string = 'isPayOff を false から true に変えるエンドポイント';
+const amount: string = '誰にどれくらい借金をしているかについての情報を返すエンドポイント';
+---
+
+<div id="container">
+    <h1 id="title">Web APIエンドポイント</h1>
+    <EndPoint title="/user/register?code=hogehoge" content={registerUser} />
+    <div id="head-space"></div>
+    <EndPoint title="/user/delete?code=hogehoge" content={deleteUser} />
+    <div id="head-space"></div>
+    <EndPoint title="/debt/create" header="Authorization: [Discord User ID] [Guild ID]" content={createDebt} />
+    <div id="head-space"></div>
+    <EndPoint title="/debt/pay-off" header="Authorization: [Discord User ID] [Guild ID]" content={payOff} />
+    <div id="head-space"></div>
+    <EndPoint title="/debt/amount" header="Authorization: [Discord User ID] [Guild ID]" content={amount} />
+
+    <style>
+        #container {
+            width: 100%;
+        }
+        #title {
+            width: 100%;
+            text-align: start;
+            font-size: 30px;
+            margin-top: 100px;
+            line-height: 50px;
+        }
+        #head-space {
+            height: 40px;
+            width: 100%;
+        }
+    </style>
+</div>

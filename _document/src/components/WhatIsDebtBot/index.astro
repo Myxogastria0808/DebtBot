@@ -1,0 +1,28 @@
+<div id="container">
+    <h1 id="title">DebtBotとは？</h1>
+    <p id="content">DebtBotは、非公開のDiscordサーバーのギルドメンバー間で借金の管理をするためのdiscord botです。</p>
+</div>
+
+<style>
+    #container {
+        width: 100%;
+        display: grid;
+        grid-template-areas:
+            '.'
+            'Title'
+            'Content';
+        grid-template-rows: 150px auto auto;
+        grid-template-columns: 100%;
+    }
+
+    #title {
+        grid-area: Title;
+        font-size: 30px;
+        line-height: 70px;
+    }
+
+    #content {
+        font-size: 20px;
+        grid-area: Content;
+    }
+</style>

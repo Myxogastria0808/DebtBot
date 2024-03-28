@@ -159,3 +159,9 @@ http://127.0.0.2:5555
 https://qiita.com/Mijinko/items/df3d2e1f90dbed5a4019
 
 https://uxmilk.jp/23592
+
+https://qiita.com/masayoshi4649/items/46fdb744cb8255f5eb98
+
+https://nova.drifting-clouds.com/blog/mermaid-drawing-with-mdx
+
+https://github.com/sjwall/mdx-mermaid

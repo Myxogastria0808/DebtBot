@@ -1,0 +1,42 @@
+---
+import Schema from './Schema/index.md';
+---
+
+<>
+    <div id="container">
+        <h1 id="title">データベース</h1>
+        <p id="content">UserテーブルとDebtテーブルが存在し、以下のような関係で結ばれている。</p>
+    </div>
+    <div id="img">
+        <img src="/debt-schema.svg" alt="debtbot schema" />
+    </div>
+
+    <style>
+        #container {
+            width: 100%;
+            display: grid;
+            grid-template-areas:
+                '.'
+                'Title'
+                'Content';
+            grid-template-rows: 100px auto auto;
+            grid-template-columns: 100%;
+        }
+
+        #title {
+            grid-area: Title;
+            font-size: 30px;
+            line-height: 70px;
+        }
+        #content {
+            font-size: 20px;
+            grid-area: Content;
+            margin-bottom: 40px;
+        }
+        #img {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</>

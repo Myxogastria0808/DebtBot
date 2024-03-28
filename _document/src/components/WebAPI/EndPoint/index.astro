@@ -1,0 +1,39 @@
+---
+interface Props {
+    title: string;
+    header?: string;
+    content: string;
+}
+
+const { title, content, header } = Astro.props;
+---
+
+<>
+    <h2 class="end-point">{title}</h2>
+    <p class="header">{header}</p>
+    <p class="content">{content}</p>
+</>
+
+<style>
+    .end-point {
+        grid-area: SlashCommand;
+        width: 100%;
+        text-align: start;
+        display: flex;
+        gap: 10px;
+        font-size: 25px;
+        line-height: 50px;
+    }
+    .header {
+        grid-area: Content;
+        width: 100%;
+        text-align: start;
+        font-size: 20px;
+    }
+    .content {
+        grid-area: Content;
+        width: 100%;
+        text-align: start;
+        font-size: 20px;
+    }
+</style>

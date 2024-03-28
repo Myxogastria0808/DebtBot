@@ -1,3 +1,12 @@
 {
-  "extends": "astro/tsconfigs/strict"
+    "extends": "astro/tsconfigs/strict",
+    "compilerOptions": {
+        "jsx": "react-jsx",
+        "jsxImportSource": "react",
+        "baseUrl": ".",
+        "typeRoots": ["./node_modules/@types", "./node_modules/mdx-mermaid/lib"],
+        "paths": {
+            "mdx-mermaid": ["node_modules/mdx-mermaid/index.d.ts"]
+        }
+    }
 }
