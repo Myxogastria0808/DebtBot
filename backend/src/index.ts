@@ -3,6 +3,7 @@ import { Hono } from 'hono';
 import { checkIsString, checkIsStringAndParseInt } from './types/env';
 import dotenv from 'dotenv';
 import { debt, user } from './routes/index';
+import { cors } from 'hono/cors';
 
 dotenv.config();
 
@@ -10,6 +11,17 @@ const port: number = checkIsStringAndParseInt(process.env.PORT);
 const ipaddress: string = checkIsString(process.env.IPADDRESS);
 
 const app = new Hono();
+
+app.use(
+    '/*',
+    cors({
+        origin: ['*'],
+        allowHeaders: ['*'],
+        allowMethods: ['GET', 'POST', 'PATCH'],
+        exposeHeaders: ['*'],
+        credentials: true,
+    })
+);
 
 app.route('/user', user);
 app.route('/debt', debt);
