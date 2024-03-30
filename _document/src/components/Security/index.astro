@@ -1,33 +1,27 @@
-<div id="container">
-    <h1 id="title">セキュリティについて</h1>
-    <p id="content">
+---
+import Card from './Card/index.astro';
+---
+
+<>
+    <h1 class="title">セキュリティについて</h1>
+    <p class="content">
         DebtBotは、DebtBotを導入したサーバーでのみ使用できるようにしています。
         また、DebtBotを使用するユーザーの登録と削除にはdiscordのOAuth2を利用しています。
         その他のコマンドについては、ユーザー登録の際に保存されたdiscordのユーザーIDとサーバーのギルドID
         を使用して正規のユーザーかどうかを判断します。
     </p>
-</div>
+    <Card />
+</>
 
 <style>
-    #container {
+    .title {
         width: 100%;
-        display: grid;
-        grid-template-areas:
-            '.'
-            'Title'
-            'Content';
-        grid-template-rows: 100px auto auto;
-        grid-template-columns: 100%;
-    }
-
-    #title {
-        grid-area: Title;
+        margin-top: 100px;
         font-size: 30px;
         line-height: 70px;
     }
-
-    #content {
+    .content {
+        width: 100%;
         font-size: 20px;
-        grid-area: Content;
     }
 </style>

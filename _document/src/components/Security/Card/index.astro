@@ -1,0 +1,57 @@
+<div id="container">
+    <div id="label">
+        <img src="/key.svg" alt="key" />
+        <p>DebtBot</p>
+    </div>
+    <div id="deer">
+        <img src="/deer.svg" alt="deer" />
+    </div>
+    <div id="status">
+        <h1 class="message">Discord OAuth2</h1>
+    </div>
+</div>
+
+<style>
+    #container {
+        margin: 60px auto 0px auto;
+        padding: 10px;
+        width: 450px;
+        border-radius: 10px;
+        background-color: #cdeae9;
+        box-shadow:
+            -5px -5px 10px 0px rgba(0, 0, 0, 0.3),
+            5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+        display: grid;
+        grid-template-areas:
+            'Label Label'
+            'Deer  .'
+            'Deer  Status'
+            'Deer  .';
+        grid-template-rows: 30px 90px 33.133px 100px;
+        grid-template-columns: 150px 300px;
+    }
+
+    #label {
+        grid-area: Label;
+        width: 100%;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 30px;
+    }
+    #deer {
+        grid-area: Deer;
+        width: 100%;
+        height: 223.133px;
+    }
+    #status {
+        grid-area: Status;
+        width: 100%;
+        height: 25px;
+    }
+    #status.message {
+        font-size: 25px;
+        height: 25px;
+    }
+</style>
