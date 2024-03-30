@@ -13,17 +13,17 @@ type Meta = {
 };
 
 const meta: Meta = {
-    lang: 'ja',
-    title: 'discord-oauth',
-    metaDescription: 'This is a discord-oauth.',
-    metaKeyword: 'discord OAuth',
-    ogTitle: 'discord-oauth',
-    ogDescription: 'This is a discord-oauth.',
-    ogWidth: null,
-    ogHeight: null,
-    ogImage: '',
+    lang: 'en',
+    title: 'DebtBot',
+    metaDescription: 'This is a DebtBot.',
+    metaKeyword: 'discord OAuth DebtBot',
+    ogTitle: 'DebtBot',
+    ogDescription: 'This is a DebtBot.',
+    ogWidth: 980,
+    ogHeight: 1184,
+    ogImage: 'https://debtbot.yukiosada.work/debtbot.png',
     ogType: 'website',
-    ogUrl: '',
+    ogUrl: 'https://debtbot.yukiosada.work/',
 };
 
 export { meta, Meta };

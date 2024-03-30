@@ -1,11 +1,10 @@
 import { Hono } from 'hono';
 import { checkIsString, checkIsStringAndParseInt } from '../../types/env';
 import dotenv from 'dotenv';
-import { titleClass, nameClass } from '../../components/css';
 import { meta } from '../../types/meta';
 import { tokenDataType, discordDataType } from '../../types/discord';
 import { registerUser, userExistValidator, deleteUser } from '../../db/src/user';
-import { Base } from '../../components';
+import { Base, Authentication } from '../../components';
 import { deleteUserResultType } from '../../db/types';
 
 dotenv.config();
@@ -32,11 +31,7 @@ router.get('/register', async (c) => {
         return c.html(
             <>
                 <Base meta={meta}>
-                    <>
-                        <h1 className={titleClass}>OAuth authentication failed.</h1>
-                        <img src="../../static/deer.svg" style={{ width: '100px', height: '100px' }} alt="Deer SVG" />
-                        <img src="https://yukiosada.work/CG-Animation.webp" style={{ width: '100px' }} alt="Deer SVG" />
-                    </>
+                    <Authentication message="OAuth authentication failed." />
                 </Base>
             </>
         );
@@ -70,10 +65,7 @@ router.get('/register', async (c) => {
                 return c.html(
                     <>
                         <Base meta={meta}>
-                            <>
-                                <h1 class={titleClass}>OAuth authentication succeeded.</h1>
-                                <h2 class={nameClass}>{discord.username}</h2>
-                            </>
+                            <Authentication message="OAuth authentication succeeded." />
                         </Base>
                     </>
                 );
@@ -81,7 +73,7 @@ router.get('/register', async (c) => {
                 return c.html(
                     <>
                         <Base meta={meta}>
-                            <h1 className={titleClass}>{discord.username} is already exists.</h1>
+                            <Authentication message={`${discord.username} is already exists.`} />
                         </Base>
                     </>
                 );
@@ -91,7 +83,7 @@ router.get('/register', async (c) => {
             return c.html(
                 <>
                     <Base meta={meta}>
-                        <h1 class={titleClass}>Unexpected error.</h1>
+                        <Authentication message="Unexpected error." />
                     </Base>
                 </>
             );
@@ -111,7 +103,7 @@ router.get('/delete', async (c) => {
         return c.html(
             <>
                 <Base meta={meta}>
-                    <h1 class={titleClass}>OAuth authentication failed.</h1>
+                    <Authentication message="OAuth authentication failed." />
                 </Base>
             </>
         );
@@ -147,7 +139,7 @@ router.get('/delete', async (c) => {
                     return c.html(
                         <>
                             <Base meta={meta}>
-                                <h1 class={titleClass}>{discord.username} successfully deleted.</h1>
+                                <Authentication message={`${discord.username} successfully deleted.`} />
                             </Base>
                         </>
                     );
@@ -155,7 +147,7 @@ router.get('/delete', async (c) => {
                     return c.html(
                         <>
                             <Base meta={meta}>
-                                <h1 class={titleClass}>{discord.username} can not delete user data.</h1>
+                                <Authentication message={`${discord.username} can not delete user data.`} />
                             </Base>
                         </>
                     );
@@ -164,7 +156,7 @@ router.get('/delete', async (c) => {
                 return c.html(
                     <>
                         <Base meta={meta}>
-                            <h1 class={titleClass}>{discord.username} is not registered.</h1>
+                            <Authentication message={`${discord.username} is not registered.`} />
                         </Base>
                     </>
                 );
@@ -174,7 +166,7 @@ router.get('/delete', async (c) => {
             return c.html(
                 <>
                     <Base meta={meta}>
-                        <h1 class={titleClass}>Unexpected error.</h1>
+                        <Authentication message="Unexpected error." />
                     </Base>
                 </>
             );

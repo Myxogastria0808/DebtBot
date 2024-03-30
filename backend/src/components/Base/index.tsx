@@ -20,9 +20,10 @@ const Base: FC<{ meta: Meta; children: JSX.Element }> = (props: { meta: Meta; ch
                     <meta property="og:image" content={props.meta.ogImage} />
                     <meta property="og:type" content={props.meta.ogType} />
                     <meta property="og:url" content={props.meta.ogUrl} />
+                    <link rel="icon" type="image/svg+xml" href="https://debtbot.yukiosada.work/deer.svg" />
                     <Style />
                 </head>
-                <body>{props.children}</body>
+                <body style={'background-color: #cdeae9;'}>{props.children}</body>
             </html>
         </>
     );
