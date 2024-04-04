@@ -22,7 +22,7 @@ if not exist %~dp0bot\.env (
 if not exist %~dp0backend\.env (
     type nul > ./backend/.env
     echo IPADDRESS = "127.0.0.1">> ./backend/.env
-    echo PORT = "3000">> ./backend/.env
+    echo PORT = "8787">> ./backend/.env
     echo CLIENTID = "">> ./backend/.env
     echo CLIENTSECRET = "">> ./backend/.env
     echo GUILDID = "">> ./backend/.env

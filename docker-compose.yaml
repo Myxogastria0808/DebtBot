@@ -17,8 +17,10 @@ services:
             context: ./backend
             dockerfile: ./backend.Dockerfile
         tty: true
+        ports:
+            - '8787:8787'
         environment:
-            - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres?schema=public
+            - DATABASE_URL=${DATABASE_URL}
         depends_on:
             - db
     db:
@@ -27,8 +29,8 @@ services:
         ports:
             - '3306:3306'
         environment:
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_DATABASE: debtbot
-            TZ: 'Asia/Tokyo'
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
+            - TZ=${TZ}
         volumes:
             - ./my.cnf:/etc/mysql/conf.d/my.cnf

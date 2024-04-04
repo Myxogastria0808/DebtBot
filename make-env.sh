@@ -36,7 +36,7 @@ if [ ! -e $BACKENDPATH ]; then
     touch $BACKENDPATH
     cat <<EOT >$BACKENDPATH
 IPADDRESS = "127.0.0.1"
-PORT = "3000"
+PORT = "8787"
 CLIENTID = ""
 CLIENTSECRET = ""
 GUILDID = ""
