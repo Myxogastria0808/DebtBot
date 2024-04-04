@@ -37,6 +37,22 @@ yarn
 yarn migrate
 ```
 
+### Linux ユーザー
+
+> [!CAUTION]
+> 以下のコマンドたちを実際に実行して試していないので、ご注意ください。
+
+```shell
+sh make-env.sh
+cd bot
+yarn
+cd ..
+cd backend
+yarn
+#データベースに関する情報を適宜書き換える
+yarn migrate
+```
+
 ### `.env`ファイルの生成
 
 ### Batchfile
