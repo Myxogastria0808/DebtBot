@@ -11,9 +11,9 @@ const containerClass = css`
     display: grid;
     grid-template-areas:
         'Label Label'
-        'Deer  .'
         'Deer  Status'
-        'Deer  .';
+        'Deer  Status'
+        'Deer  Status';
     grid-template-rows: 30px 80px 33.133px 110px;
     grid-template-columns: 150px 300px;
 `;
@@ -35,14 +35,15 @@ const deerClass = css`
 `;
 
 const statusClass = css`
+    display: flex;
     grid-area: Status;
     width: 100%;
-    height: 25px;
+    place-items: center;
 `;
 
 const messageClass = css`
-    font-size: 1.25rem;
-    height: 25px;
+    align-items: center;
+    font-size: 40px;
 `;
 
 const Authentication: FC<{ message: string }> = (props: { message: string }) => {

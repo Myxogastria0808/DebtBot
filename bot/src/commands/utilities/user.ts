@@ -22,7 +22,7 @@ const deleteUrl = checkIsString(process.env.DELETEURL);
 const guildId = checkIsString(process.env.GUILDID);
 
 const registerUser = {
-    data: new SlashCommandBuilder().setName('register-user').setDescription('Sample slash command.'),
+    data: new SlashCommandBuilder().setName('register-user').setDescription('ユーザー登録ができます。'),
     async execute(interaction: CommandInteraction) {
         if (guildId === interaction.guild?.id) {
             const registerUserLinkButton = new ButtonBuilder()
@@ -62,7 +62,7 @@ const registerUser = {
 };
 
 const deleteUser = {
-    data: new SlashCommandBuilder().setName('delete-user').setDescription('Sample slash command.'),
+    data: new SlashCommandBuilder().setName('delete-user').setDescription('ユーザー削除ができます。'),
     async execute(interaction: CommandInteraction) {
         if (guildId === interaction.guild?.id) {
             const acceptButton = new ButtonBuilder().setCustomId('accept').setLabel('Yes').setStyle(ButtonStyle.Danger);

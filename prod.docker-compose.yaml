@@ -1,0 +1,60 @@
+version: '3.8'
+services:
+    bot:
+        image: debtbot-bot
+        container_name: debtbot-bot
+        build:
+            context: ./bot
+            dockerfile: ./bot.Dockerfile
+        tty: true
+        depends_on:
+            - backend
+            - db
+            - cloudflared
+        # networks:
+        #     debtbot_network:
+        #         ipv4_address: 10.255.255.10
+    backend:
+        image: debtbot-backend
+        container_name: debtbot-backend
+        ports:
+            - '3000:3000'
+        build:
+            context: ./backend
+            dockerfile: ./backend.Dockerfile
+        tty: true
+        environment:
+            - DATABASE_URL=${DATABASE_URL}
+        depends_on:
+            - db
+        # networks:
+        #     debtbot_network:
+        #         ipv4_address: 10.255.255.20
+    db:
+        image: mysql:8.3.0
+        container_name: debtbot-db
+        ports:
+            - '3307:3306'
+        environment:
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
+            - TZ=${TZ}
+        volumes:
+            - ./my.cnf:/etc/mysql/conf.d/my.cnf
+        # networks:
+        #     debtbot_network:
+        #         ipv4_address: 10.255.255.30
+    cloudflared:
+        restart: unless-stopped
+        image: cloudflare/cloudflared:latest
+        container_name: cloudflared
+        command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
+        depends_on:
+            - backend
+            - db
+# networks:
+#     debtbot_network:
+#         ipam:
+#             driver: default
+#             config:
+#                 - subnet: 10.255.255.0/24

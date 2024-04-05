@@ -17,7 +17,7 @@ app.use(
     cors({
         origin: ['*'],
         allowHeaders: ['*'],
-        allowMethods: ['GET', 'POST', 'PATCH'],
+        // allowMethods: ['GET', 'POST', 'PATCH'],
         exposeHeaders: ['*'],
         credentials: true,
     })
@@ -25,6 +25,10 @@ app.use(
 
 app.route('/user', user);
 app.route('/debt', debt);
+
+app.get('/', async (c) => {
+    return c.text('Hello, World!');
+});
 
 console.log(`Server is running on port http://${ipaddress}:${port}`);
 

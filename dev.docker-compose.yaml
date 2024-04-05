@@ -10,27 +10,43 @@ services:
         depends_on:
             - backend
             - db
+        networks:
+            debtbot_network:
+                ipv4_address: 10.255.255.10
     backend:
         image: debtbot-backend
         container_name: debtbot-backend
+        ports:
+            - '3000:3000'
         build:
             context: ./backend
             dockerfile: ./backend.Dockerfile
         tty: true
-        ports:
-            - '8787:8787'
         environment:
             - DATABASE_URL=${DATABASE_URL}
         depends_on:
             - db
+        networks:
+            debtbot_network:
+                ipv4_address: 10.255.255.20
     db:
         image: mysql:8.3.0
         container_name: debtbot-db
         ports:
-            - '3306:3306'
+            - '3307:3306'
         environment:
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
             - MYSQL_DATABASE=${MYSQL_DATABASE}
             - TZ=${TZ}
         volumes:
             - ./my.cnf:/etc/mysql/conf.d/my.cnf
+        networks:
+            debtbot_network:
+                ipv4_address: 10.255.255.30
+
+networks:
+    debtbot_network:
+        ipam:
+            driver: default
+            config:
+                - subnet: 10.255.255.0/24

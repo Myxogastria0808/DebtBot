@@ -1,5 +1,5 @@
 import { Hono } from 'hono';
-import { checkIsString, checkIsStringAndParseInt } from '../../types/env';
+import { checkIsString } from '../../types/env';
 import dotenv from 'dotenv';
 import { meta } from '../../types/meta';
 import { tokenDataType, discordDataType } from '../../types/discord';
@@ -11,10 +11,13 @@ dotenv.config();
 
 const router = new Hono();
 
-const port: number = checkIsStringAndParseInt(process.env.PORT);
+const port: string = checkIsString(process.env.PORT);
 const ipaddress: string = checkIsString(process.env.IPADDRESS);
-const registerRedirectUrl: string = `http://${ipaddress}:${port}/user/register`;
-const deleteRedirectUrl: string = `http://${ipaddress}:${port}/user/delete`;
+const domain: string | undefined = process.env.DOMAIN;
+const registerRedirectUrl: string =
+    typeof domain !== 'undefined' ? `https://${domain}/user/register` : `http://${ipaddress}:${port}/user/register`;
+const deleteRedirectUrl: string =
+    typeof domain !== 'undefined' ? `https://${domain}/user/delete` : `http://${ipaddress}:${port}/user/delete`;
 
 const clientId: string = checkIsString(process.env.CLIENTID);
 const clientSecret: string = checkIsString(process.env.CLIENTSECRET);
@@ -54,6 +57,12 @@ router.get('/register', async (c) => {
                 headers: { Authorization: `Bearer ${token}` },
             });
             const discord: discordDataType = await discordData.json();
+
+            //TODO
+            console.log(body);
+            console.log(IncludesToken);
+            console.log(token);
+            console.log(discord);
             //* ***************************************//
             //* ***************************************//
             //ユーザーが存在するかどうかチェック

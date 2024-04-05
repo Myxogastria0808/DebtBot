@@ -39,12 +39,9 @@ const createDebt = {
                     });
                     const data: createDebtAuthorizationDataType = await debtCreateData.json();
                     const message: Message<boolean> = await interaction.editReply(data.authorization);
-
                     if (typeof data.debtId !== 'number') return;
                     const debtId: number = data.debtId;
-
                     await message.react('✅');
-
                     await interaction.followUp(
                         `Debt ID: ${debtId}\nお金を貸した人: <@!${lend}>\nお金を借りた人: <@!${borrow}>\n金額: ${money}円`
                     );
@@ -88,7 +85,7 @@ const createDebt = {
                         const debtPayOffDataJsonify: createDebtAuthorizationDataType = await debtPayOffData.json();
                         if (typeof debtPayOffDataJsonify.debtId !== 'number') return;
                         const payOffDebtId: number = debtPayOffDataJsonify.debtId;
-                        await interaction.followUp(`debtId: ${payOffDebtId}\n完済しました。`);
+                        await interaction.followUp(`Debt ID: ${payOffDebtId}\n完済しました。`);
                     } catch (_e: any) {
                         console.log(`Unexpected error.`);
                     }
@@ -139,12 +136,12 @@ const amountDebt = {
                         }
                     });
                     if (resultMessage.length === 0) {
-                        await interaction.followUp('あなたは現在、誰からも借金をしていません。');
+                        await interaction.followUp(`<@!${discordId}>は現在、誰からも借金をしていません。`);
                     } else {
                         await interaction.followUp(resultMessage);
                     }
                 } catch (_e: any) {
-                    await interaction.editReply('Fetch error is ocurred.');
+                    await interaction.editReply(_e as string);
                 }
             }
         } else {

@@ -18,6 +18,6 @@ RUN npx prisma generate
 
 COPY . ./
 
-EXPOSE 8787
+EXPOSE 3000
 
-CMD ["yarn", "dev"]
+CMD ["yarn", "dev:hono"]

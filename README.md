@@ -12,6 +12,10 @@
 -   ORM: Prisma
 -   RDBMS: MySQL
 
+## website
+
+-   Astro で作成
+
 > [!CAUTION]
 > プログラムの中に、`console.log()`するべきでない内容を`console.log()`しています。実際にこのプログラムを使用する際は、`console.log()`を全て消してください。
 
@@ -181,3 +185,9 @@ https://qiita.com/masayoshi4649/items/46fdb744cb8255f5eb98
 https://nova.drifting-clouds.com/blog/mermaid-drawing-with-mdx
 
 https://github.com/sjwall/mdx-mermaid
+
+https://fossengineer.com/selfhosting-cloudflared-tunnel-docker/
+
+https://zenn.dev/hrko/scraps/29df6c7ac02f03
+
+https://fontplus.jp/usage/services/change-on-screen
