@@ -40,6 +40,7 @@ services:
             - TZ=${TZ}
         volumes:
             - ./my.cnf:/etc/mysql/conf.d/my.cnf
+            - ./dev-db:/var/lib/mysql
         networks:
             debtbot_network:
                 ipv4_address: 10.255.255.30

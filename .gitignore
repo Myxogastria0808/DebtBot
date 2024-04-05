@@ -1,1 +1,5 @@
 .env
+/db/*
+!/db/.gitkeep
+/dev-db/*
+!/dev-db/.gitkeep
