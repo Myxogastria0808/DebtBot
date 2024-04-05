@@ -12,7 +12,7 @@ const registerUrl = (0, types_1.checkIsString)(process.env.REGISTERURL);
 const deleteUrl = (0, types_1.checkIsString)(process.env.DELETEURL);
 const guildId = (0, types_1.checkIsString)(process.env.GUILDID);
 const registerUser = {
-    data: new discord_js_1.SlashCommandBuilder().setName('register-user').setDescription('Sample slash command.'),
+    data: new discord_js_1.SlashCommandBuilder().setName('register-user').setDescription('ユーザー登録ができます。'),
     async execute(interaction) {
         if (guildId === interaction.guild?.id) {
             const registerUserLinkButton = new discord_js_1.ButtonBuilder()
@@ -43,7 +43,7 @@ const registerUser = {
 };
 exports.registerUser = registerUser;
 const deleteUser = {
-    data: new discord_js_1.SlashCommandBuilder().setName('delete-user').setDescription('Sample slash command.'),
+    data: new discord_js_1.SlashCommandBuilder().setName('delete-user').setDescription('ユーザー削除ができます。'),
     async execute(interaction) {
         if (guildId === interaction.guild?.id) {
             const acceptButton = new discord_js_1.ButtonBuilder().setCustomId('accept').setLabel('Yes').setStyle(discord_js_1.ButtonStyle.Danger);

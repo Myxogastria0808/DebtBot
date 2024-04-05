@@ -10,6 +10,6 @@ WORKDIR /home/bot
 COPY . ./
 
 RUN yarn install && \
-    npm run compile
+    yarn compile
 
 CMD ["yarn", "start"]

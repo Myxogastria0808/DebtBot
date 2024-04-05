@@ -90,7 +90,7 @@ const createDebt = {
                         if (typeof debtPayOffDataJsonify.debtId !== 'number')
                             return;
                         const payOffDebtId = debtPayOffDataJsonify.debtId;
-                        await interaction.followUp(`debtId: ${payOffDebtId}\n完済しました。`);
+                        await interaction.followUp(`Debt ID: ${payOffDebtId}\n完済しました。`);
                     }
                     catch (_e) {
                         console.log(`Unexpected error.`);
@@ -102,7 +102,7 @@ const createDebt = {
             }
         }
         else {
-            await interaction.editReply('You are not guild member.');
+            await interaction.editReply('あなたは、ギルドメンバーではありません。');
         }
     },
 };
@@ -145,19 +145,19 @@ const amountDebt = {
                         }
                     });
                     if (resultMessage.length === 0) {
-                        await interaction.followUp('あなたは現在、誰からも借金をしていません。');
+                        await interaction.followUp(`<@!${discordId}>は現在、誰からも借金をしていません。`);
                     }
                     else {
                         await interaction.followUp(resultMessage);
                     }
                 }
                 catch (_e) {
-                    await interaction.editReply('Fetch error is ocurred.');
+                    await interaction.editReply(_e);
                 }
             }
         }
         else {
-            await interaction.editReply('You are not guild member.');
+            await interaction.editReply('あなたは、ギルドメンバーではありません。');
         }
     },
 };
