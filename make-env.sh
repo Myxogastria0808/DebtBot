@@ -12,11 +12,23 @@ CURRENT=$(
     pwd
 )
 
+ROOTPATH="${CURRENT}/.env"
 BOTPATH="${CURRENT}/bot/.env"
 BACKENDPATH="${CURRENT}/backend/.env"
 
-echo $BOTPATH
-echo $BACKENDPATH
+if [ ! -e $ROOTPATH ]; then
+    touch $ROOTPATH
+    cat <<EOT >$ROOTPATH
+DATABASE_URL=
+MYSQL_ROOT_PASSWORD=
+MYSQL_DATABASE=
+TZ=
+CLOUDFLARE_TUNNEL_TOKEN=
+
+EOT
+else
+    echo ./.env is already exits.
+fi
 
 if [ ! -e $BOTPATH ]; then
     touch $BOTPATH
@@ -36,7 +48,8 @@ if [ ! -e $BACKENDPATH ]; then
     touch $BACKENDPATH
     cat <<EOT >$BACKENDPATH
 IPADDRESS = "127.0.0.1"
-PORT = "8787"
+PORT = "3000"
+DOMAIN = ""
 CLIENTID = ""
 CLIENTSECRET = ""
 GUILDID = ""

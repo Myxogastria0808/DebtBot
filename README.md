@@ -17,7 +17,17 @@
 -   Astro で作成
 
 > [!CAUTION]
-> プログラムの中に、`console.log()`するべきでない内容を`console.log()`しています。実際にこのプログラムを使用する際は、`console.log()`を全て消してください。
+> プログラムの中に、`console.log()`するべきでない内容を`console.log()`している可能性があります。実際にこのプログラムを使用する際は、`console.log()`を全て消してください。
+
+## 概略図
+
+```mermaid
+flowchart LR;
+    bot[Discord Bot] --cloudflare tunnel--- webApi["Web API (Hono)"]
+    subgraph backend
+    webApi["Web API (Hono)"] --ORM: Prisma--- db["Database (RDBMS: MySQL)"]
+    end
+```
 
 ### 使用を推奨しているパッケージマネージャー
 
@@ -79,9 +89,6 @@ bash make-env.sh
 > [!NOTE]
 > 空の文字列(または数字)に適切な情報を入力してください。
 
-> [!NOTE]
-> WEBAPIURL は、適宜変えてください。
-
 > [!CAUTION]
 > 　 `.env`ファイルに書く内容は、外部に漏れてはいけない内容なので、必ず`.gitignore`ファイルに`.env`を書いてください。
 
@@ -91,7 +98,7 @@ APPLICATIONID = ""
 GUILDID = ""
 REGISTERURL = ""
 DELETEURL = ""
-WEBAPIURL = "http://127.0.0.1:3000"
+WEBAPIURL = ""
 
 ```
 
@@ -109,6 +116,7 @@ WEBAPIURL = "http://127.0.0.1:3000"
 ```.env
 IPADDRESS = "127.0.0.1"
 PORT = "3000"
+DOMAIN = ""
 CLIENTID = ""
 CLIENTSECRET = ""
 GUILDID = ""
@@ -117,6 +125,22 @@ GUILDID = ""
 # This was inserted by ~
 
 
+```
+
+### ルートのディレクトリ に置く`.env`ファイルの中身
+
+> [!NOTE]
+> 空の文字列(または数字)に適切な情報を入力してください。
+
+> [!CAUTION]
+> 　`.env`ファイルに書く内容は、外部に漏れてはいけない内容を含むので、必ず`.gitignore`ファイルに`.env`を書いてください。
+
+```.env
+DATABASE_URL=
+MYSQL_ROOT_PASSWORD=
+MYSQL_DATABASE=
+TZ=
+CLOUDFLARE_TUNNEL_TOKEN=
 ```
 
 ## DebtBot のテーブル設計
@@ -173,6 +197,22 @@ http://127.0.0.2:5555
 #### `/debt/amount`
 
 -   誰にどれくらい借金をしているかについての情報を返すエンドポイント
+
+# docker
+
+## 開発時
+
+```shell
+docker compose -f dev.docker-compose.yaml up -d
+docker compose -f dev.docker-compose.yaml exec -it backend npx prisma migrate dev --name init
+```
+
+## リリース時
+
+```shell
+docker compose -f prod.docker-compose.yaml up -d
+docker compose -f prod.docker-compose.yaml exec -it backend npx prisma migrate dev --name init
+```
 
 ### 参考文献
 
