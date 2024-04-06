@@ -23,9 +23,14 @@
 
 ```mermaid
 flowchart LR;
-    bot[Discord Bot] --cloudflare tunnel--- webApi["Web API (Hono)"]
-    subgraph backend
+    discordBot[Discord Bot] --cloudflare tunnel--- webApi["Web API (Hono)"]
     webApi["Web API (Hono)"] --ORM: Prisma--- db["Database (RDBMS: MySQL)"]
+    subgraph bot
+    discordBot
+    end
+    subgraph backend
+    webApi
+    db
     end
 ```
 
