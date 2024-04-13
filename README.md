@@ -209,14 +209,14 @@ http://127.0.0.2:5555
 
 ```shell
 docker compose -f dev.docker-compose.yaml up -d
-docker compose -f dev.docker-compose.yaml exec -it backend npx prisma migrate dev --name init
+docker compose -f dev.docker-compose.yaml exec -it debtbot-backend npx prisma migrate dev --name init
 ```
 
 ## リリース時
 
 ```shell
 docker compose -f prod.docker-compose.yaml up -d
-docker compose -f prod.docker-compose.yaml exec -it backend npx prisma migrate dev --name init
+docker compose -f prod.docker-compose.yaml exec -it debtbot-backend npx prisma migrate dev --name init
 ```
 
 ### 参考文献
