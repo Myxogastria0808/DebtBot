@@ -21,7 +21,7 @@
         "eslint": "^8.57.0",
         "eslint-config-prettier": "^9.1.0",
         "ts-node-dev": "^2.0.0",
-        "typescript": "^5.4.4"
+        "typescript": "^5.4.5"
     },
     "dependencies": {
         "discord.js": "^14.14.1"
