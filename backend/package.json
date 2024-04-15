@@ -14,7 +14,7 @@
         "studio": "prisma studio --hostname \"127.0.0.2\""
     },
     "dependencies": {
-        "@hono/node-server": "^1.9.1",
+        "@hono/node-server": "^1.10.0",
         "@prisma/client": "^5.12.1",
         "hono": "^4.1.7"
     },
