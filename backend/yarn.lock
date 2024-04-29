@@ -124,10 +124,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.19.12.tgz#c57c8afbb4054a3ab8317591a0b7320360b444ae"
   integrity sha512-T1QyPSDCyMXaO3pzBkF96E8xMkiRYbUEZADd29SyPGabqxMViNoii+NcK7eWJAEoU6RZyEm5lVSIjTmcdoB9HA==
 
-"@hono/node-server@^1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@hono/node-server/-/node-server-1.11.0.tgz#18d73d0a79d1c0ca387d02866231b5e2d9eb7b5e"
-  integrity sha512-TLIJq9TMtD1NEG1mVoqNUn1Ita0qSaB5XboZErjFBcO/GJYXwWY4dVdTi9G0lbxtu0x+hJXDItcLaFHb7rlFTw==
+"@hono/node-server@^1.11.1":
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/@hono/node-server/-/node-server-1.11.1.tgz#f4c7bea7f3d52760b1950d6b8aeb900cc59142d3"
+  integrity sha512-GW1Iomhmm1o4Z+X57xGby8A35Cu9UZLL7pSMdqDBkD99U5cywff8F+8hLk5aBTzNubnsFAvWQ/fZjNwPsEn9lA==
 
 "@jridgewell/resolve-uri@^3.0.3":
   version "3.1.2"
