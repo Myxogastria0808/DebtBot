@@ -411,10 +411,10 @@ hasown@^2.0.0:
   dependencies:
     function-bind "^1.1.2"
 
-hono@^4.2.9:
-  version "4.2.9"
-  resolved "https://registry.yarnpkg.com/hono/-/hono-4.2.9.tgz#9e81de065d18f61721aa6bfd9121dcf2af3e78d2"
-  integrity sha512-59FAv52UxDWUt/NlC0NzrRCjeVCThUnVlqlrKYm+k80XujBu6uJwBIa5gACKKZWobjA0MJ6Vds0I3URKf383Cw==
+hono@^4.3.2:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/hono/-/hono-4.3.2.tgz#8dc53c087794d01a7bc9573c90292c3a1ba9e832"
+  integrity sha512-wiZcF5N06tc232U11DnqW6hP8DNoypjsrxslKXfvOqOAkTdh7K1HLZJH/92Mf+urxUTGi96f1w4xx/1Qozoqiw==
 
 inflight@^1.0.4:
   version "1.0.6"
